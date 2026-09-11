@@ -31,7 +31,7 @@ jobs:
         with:
           repository: scriora/scriora-social
           path: scriora-social
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@v6
         with:
           version: "11.21.0"
       - uses: actions/setup-node@v4
@@ -59,7 +59,7 @@ jobs:
         with:
           repository: scriora/scriora-social
           path: scriora-social
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@v6
         with:
           version: "11.21.0"
       - uses: actions/setup-node@v4
@@ -84,7 +84,7 @@ jobs:
         with:
           repository: scriora/scriora-social
           path: scriora-social
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@v6
         with:
           version: "11.21.0"
       - uses: actions/setup-node@v4
@@ -113,7 +113,7 @@ jobs:
         with:
           repository: scriora/scriora-social
           path: scriora-social
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@v6
         with:
           version: "11.21.0"
       - uses: actions/setup-node@v4
@@ -153,7 +153,7 @@ jobs:
         with:
           repository: scriora/scriora-social
           path: scriora-social
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@v6
         with:
           version: "11.21.0"
       - uses: actions/setup-node@v4
@@ -182,7 +182,7 @@ jobs:
         with:
           repository: scriora/scriora-social
           path: scriora-social
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@v6
         with:
           version: "11.21.0"
       - uses: actions/setup-node@v4
