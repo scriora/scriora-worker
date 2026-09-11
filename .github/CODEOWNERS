@@ -1,0 +1,10 @@
+# Scriora Code Owners
+# Reference: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Default: all files require review from core team
+* @scriora/core-team
+
+# Architecture documents require senior review
+*.md @scriora/core-team
+prisma/ @scriora/core-team
+.github/ @scriora/core-team

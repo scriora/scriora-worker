@@ -1,0 +1,60 @@
+name: Contribution Checker
+
+on:
+  pull_request_target:
+    types: [opened, edited, synchronize, reopened]
+
+permissions:
+  pull-requests: write
+  contents: read
+
+jobs:
+  cla:
+    name: contribution-checker / cla
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: contributor-assistant/github-action@v2.6.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.CLA_TOKEN }}
+        with:
+          path-to-signatures: ".github/cla/signatures.json"
+          path-to-document: "https://github.com/scriora/.github/blob/main/CLA.md"
+          branch: "cla-signatures"
+          allowlist: "bot*,dependabot[bot],github-actions[bot]"
+
+  title:
+    name: contribution-checker / title
+    runs-on: ubuntu-latest
+    steps:
+      - uses: amannn/action-semantic-pull-request@v5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          types: |
+            feat
+            fix
+            chore
+            docs
+            refactor
+            test
+            perf
+            ci
+            build
+            security
+          requireScope: false
+
+  decision:
+    name: contribution-checker / decision
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check PR has description
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const body = context.payload.pull_request.body;
+            if (!body || body.trim().length < 30) {
+              core.setFailed('PR description is required (min 30 characters). Please fill in the PR template.');
+            } else {
+              console.log('PR description check passed ✓');
+            }
